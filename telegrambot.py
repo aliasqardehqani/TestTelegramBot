@@ -14,7 +14,9 @@ keyboard_markup.add("parts", "send ticket", 'operator')
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
-    bot.send_message(call.message.chat.id, "You clicked on a button")
+    bot.send_message(call.message.chat.id, "You clicked on a button")  # show a pm
+    bot.answer_callback_query(call.id, "شما کلیک کردی؟ :)")  # show a notification
+    bot.answer_callback_query(call.id, "شما کلیک کردی؟ :)", show_alert=True)  # show a Alert Notification
 
 @bot.message_handler(commands=['start'])
 def send_message(message):
